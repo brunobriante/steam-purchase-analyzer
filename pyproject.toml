@@ -1,0 +1,12 @@
+[project]
+name = "steam-purchase-analyzer"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "altair>=5.5.0",
+    "beautifulsoup4>=4.12.3",
+    "pandas>=2.2.3",
+    "streamlit>=1.41.0",
+]
