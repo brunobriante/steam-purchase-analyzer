@@ -33,7 +33,7 @@ HEADER_VALUES = [
 ]
 
 
-def validate_history_file():
+def validate_history_file() -> None:
     soup = get_soup(st.session_state.history_file)
     try:
         breadcrumb = soup.find("span", "breadcrumb_current_page")
@@ -46,4 +46,3 @@ def validate_history_file():
         return
 
     st.session_state.valid_history = False
-    return

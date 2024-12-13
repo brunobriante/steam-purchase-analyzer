@@ -1,8 +1,22 @@
 import streamlit as st
 
-from utils.analyzer import analyze_history
+from utils.analyzer import (
+    account_overview,
+    monthly_spending,
+    total_purchases,
+    total_spending,
+)
+from utils.parser import get_dataframe
 from utils.validator import validate_history_file
 
+st.set_page_config(
+    page_title="Steam Purchase Analyzer",
+    page_icon=":material/joystick:",
+    menu_items={
+        "report a bug": "https://github.com/brunobriante/steam-purchase-analyzer/issues",
+        "about": "made by [bruno.briante.net@bluesky](https://bsky.app/profile/bruno.briante.net)",
+    },
+)
 st.markdown(
     """
 <style>
@@ -74,4 +88,12 @@ with uploader_block.container():
     if st.session_state.history_file is not None and st.session_state.valid_history:
         uploader_block.empty()
         with analysis_block.container():
-            st.write(analyze_history())
+            df = get_dataframe(st.session_state.history_file)
+
+            account_overview(df)
+            st.divider()
+            total_purchases(df)
+            st.divider()
+            total_spending(df)
+            st.divider()
+            monthly_spending(df)

@@ -1,9 +1,10 @@
 import locale
 import re
-from datetime import date, datetime
+from datetime import datetime
 
 import pandas as pd
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
+from streamlit.runtime.uploaded_file_manager import UploadedFile
 
 from utils.enum import Currency, PurchaseType
 
@@ -35,15 +36,15 @@ GIFT_VALUE = (
 PRICE_RE = r"[0-9]*[.,][0-9]*"
 
 
-def get_soup(file):
+def get_soup(file: UploadedFile) -> BeautifulSoup:
     try:
-        return bs(file.getvalue().decode("utf-8"), "lxml")
+        return BeautifulSoup(file.getvalue().decode("utf-8"), "lxml")
     except BaseException:
-        return bs("", "lxml")
+        return BeautifulSoup("", "lxml")
 
 
-def get_date(column: str, locale: str = "EN") -> date:
-    return datetime.strptime(column, "%d %b, %Y").date()
+def get_date(column: str, locale: str = "EN") -> datetime:
+    return datetime.strptime(column, "%d %b, %Y")
 
 
 def get_games(column: str) -> list:
@@ -95,7 +96,7 @@ def get_currency(column: str) -> Currency:
     return Currency.Other
 
 
-def get_dataframe(file):
+def get_dataframe(file: UploadedFile) -> pd.DataFrame:
     data = []
 
     soup = get_soup(file)

@@ -1,15 +1,15 @@
 from enum import Enum
 
 
-class Currency(Enum):
-    BRL = 1
-    USD = 2
-    EUR = 3
-    Other = 4
+class Currency(str, Enum):
+    BRL = "BRL"
+    USD = "USD"
+    EUR = "EUR"
+    Other = "Other"
 
 
-class PurchaseType(Enum):
-    Purchase = 1
-    IAP = 2
-    Gift = 3
-    Other = 4
+class PurchaseType(str, Enum):
+    Purchase = "Purchase"
+    IAP = "IAP"
+    Gift = "Gift"
+    Other = "Other"
