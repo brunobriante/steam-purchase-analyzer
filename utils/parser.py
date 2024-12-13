@@ -1,6 +1,6 @@
 import locale
 import re
-from datetime import datetime
+from datetime import date, datetime
 
 import pandas as pd
 from bs4 import BeautifulSoup as bs
@@ -42,8 +42,8 @@ def get_soup(file):
         return bs("", "lxml")
 
 
-def get_date(column: str, locale: str = "EN") -> datetime:
-    return datetime.strptime(column, "%d %b, %Y")
+def get_date(column: str, locale: str = "EN") -> date:
+    return datetime.strptime(column, "%d %b, %Y").date()
 
 
 def get_games(column: str) -> list:
