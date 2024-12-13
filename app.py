@@ -83,6 +83,10 @@ with uploader_block.container():
     4. Repeat 2 and 3 until the button don't show on the bottom of the page
     5. Save that page as a HTML file
     6. Upload it here to be analyzed
+
+    ## Caveats
+    * Your steam page should be in english (i'm working on that)
+    * It only reads purchases made in USD, BRL and EUR (ping me on bruno.briante.net@bsky if you had other currencies)
     """)
 
     if st.session_state.history_file is not None and st.session_state.valid_history:
