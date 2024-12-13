@@ -1,6 +1,6 @@
 [theme]
 base = "dark"
-font = "sans-serif"
+font = "sans serif"
 backgroundColor = "#1B2838"
 secondaryBackgroundColor = "linear-gradient(90deg, #06BFFF 30%, #2D73FF 100%)"
 textColor = "#FFFFFF"
